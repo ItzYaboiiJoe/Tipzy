@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var price: Int?
-    @State private var tipPercent: Int?
+    @State private var price: Double?
+    @State private var tipPercent: Double?
     @State private var tipAmount: Double?
     @State private var total: Double?
 
