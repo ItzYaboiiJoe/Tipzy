@@ -1,5 +1,7 @@
 import SwiftUI
 
+let QuickTip = [10,15,17,20]
+
 struct ContentView: View {
     @State private var price: Double?
     @State private var tipPercent: Double?
@@ -21,13 +23,33 @@ struct ContentView: View {
                 }
 
                 Section(header: Text("Enter how much tip %")) {
-                    TextField(
-                        "How much tip %",
-                        value: $tipPercent,
-                        format: .number
-                    )
-                    .keyboardType(.numberPad)
-                    .textFieldStyle(.roundedBorder)
+                    VStack(alignment: .leading, spacing: 8) {
+                        TextField(
+                            "How much tip %",
+                            value: $tipPercent,
+                            format: .number
+                        )
+                        .keyboardType(.numberPad)
+                        .textFieldStyle(.roundedBorder)
+                        .padding(.vertical, 4)
+                        
+                        HStack(spacing: 12) {
+                            ForEach(QuickTip, id: \.self) { quickTip in
+                                Button(action: {
+                                    self.tipPercent = Double(quickTip)
+                                }) {
+                                    Text("\(quickTip)%")
+                                        .frame(maxWidth: .infinity)
+                                        .padding(.vertical, 6)
+                                        .background(Color.blue.opacity(0.1))
+                                        .foregroundColor(.blue)
+                                        .cornerRadius(8)
+                                }
+                                .buttonStyle(PlainButtonStyle())
+                            }
+                        }
+                        .frame(maxWidth: .infinity)
+                    }
                     .padding(.vertical, 4)
                 }
 
@@ -37,7 +59,7 @@ struct ContentView: View {
                         .padding(.top, 10)
                     Text(total != nil ? String(format: "Total: $%.2f", total!) : "Total: ")
                         .font(.title2).bold()
-                        .padding(.top, 10)                }
+                        .padding(.top, 10)}
             }
             
             Button(action: calulateTip) {
