@@ -37,7 +37,7 @@ struct ContentView: View {
                         .padding(.top, 10)
                     Text(total != nil ? String(format: "Total: $%.2f", total!) : "Total: ")
                         .font(.title2).bold()
-                }
+                        .padding(.top, 10)                }
             }
             
             Button(action: calulateTip) {
