@@ -26,9 +26,10 @@ struct ContentView: View {
                     )
                     .keyboardType(.numberPad)
                 }
-                Text(tipAmount != nil ? String(format: "Tip: $%.2f", tipAmount!) : "Tip: --")
-                Text(tipAmount != nil ? String(format: "Total: $%.2f", total!) : "Total: --")
             }
+            Text(tipAmount != nil ? String(format: "Tip: $%.2f", tipAmount!) : "Tip: --")
+            Text(tipAmount != nil ? String(format: "Total: $%.2f", total!) : "Total: --")
+            
             Button(action: calulateTip) {
                 Text("Calculate")
             }
@@ -48,7 +49,6 @@ struct ContentView: View {
         let tip = Double(price) * (Double(tipPercent) / 100)
         tipAmount = tip
         total = Double(price) + tip
-        print("Calculated tip: \(tip)")
     }
 }
 
