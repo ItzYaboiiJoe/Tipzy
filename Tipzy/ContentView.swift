@@ -16,6 +16,8 @@ struct ContentView: View {
                         format: .number
                     )
                     .keyboardType(.numberPad)
+                    .textFieldStyle(.roundedBorder)
+                    .padding(.vertical, 4)
                 }
 
                 Section(header: Text("Enter how much tip %")) {
@@ -25,19 +27,29 @@ struct ContentView: View {
                         format: .number
                     )
                     .keyboardType(.numberPad)
+                    .textFieldStyle(.roundedBorder)
+                    .padding(.vertical, 4)
+                }
+
+                Section(header: Text("Results")) {
+                    Text(tipAmount != nil ? String(format: "Tip: $%.2f", tipAmount!) : "Tip: ")
+                        .font(.title2).bold()
+                        .padding(.top, 10)
+                    Text(total != nil ? String(format: "Total: $%.2f", total!) : "Total: ")
+                        .font(.title2).bold()
                 }
             }
-            Text(tipAmount != nil ? String(format: "Tip: $%.2f", tipAmount!) : "Tip: --")
-            Text(tipAmount != nil ? String(format: "Total: $%.2f", total!) : "Total: --")
             
             Button(action: calulateTip) {
                 Text("Calculate")
+                    .font(.headline)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color.blue.opacity(0.9))
+                    .foregroundColor(.white)
+                    .cornerRadius(12)
+                    .shadow(color: .gray.opacity(0.3), radius: 3, x: 0, y: 2)
             }
-            .padding()
-            .frame(maxWidth: .infinity)
-            .background(Color.blue)
-            .foregroundColor(.white)
-            .cornerRadius(10)
             .padding(.horizontal)
         }
     }
