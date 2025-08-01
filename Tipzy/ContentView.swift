@@ -1,6 +1,6 @@
 import SwiftUI
 
-let QuickTip = [10,15,17,20]
+let QuickTip = [13,15,18,20]
 
 struct ContentView: View {
     @State private var price: Double?
@@ -17,7 +17,7 @@ struct ContentView: View {
                         value: $price,
                         format: .number
                     )
-                    .keyboardType(.numberPad)
+                    .keyboardType(.decimalPad)
                     .textFieldStyle(.roundedBorder)
                     .padding(.vertical, 4)
                 }
@@ -29,7 +29,7 @@ struct ContentView: View {
                             value: $tipPercent,
                             format: .number
                         )
-                        .keyboardType(.numberPad)
+                        .keyboardType(.decimalPad)
                         .textFieldStyle(.roundedBorder)
                         .padding(.vertical, 4)
                         
